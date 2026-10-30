@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristhin - Mis XV Años</title>
+    <link rel="stylesheet" href="CCSB.css?v=25">
+</head>
+<body>
+    <div class="main-center">
+        <!-- Modal de Bienvenida -->
+        <div id="welcomeModal" class="modal-overlay">
+            <div class="welcome-hero">
+                <h1 class="welcome-title">Bienvenidos a la invitación<br/>de los XV años de<br/>Cristhin</h1>
+                <p class="welcome-note">La música de fondo es parte de la experiencia</p>
+                <div class="welcome-actions">
+                    <button id="enterWithMusic" class="btn-gold" onclick="enterWithMusicClick()">Ingresar con música</button>
+                    <button id="enterWithoutMusic" class="btn-gold-outline" onclick="enterWithoutMusicClick()">Ingresar sin música</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reproductor de música -->
+        <div id="musicPlayer" class="music-player" style="display: none;">
+            <button id="musicToggle" class="music-button modern-icon" title="Reproducir/Pausar música">
+                <svg id="volumeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="#222" stroke="#fff" stroke-width="1"></polygon>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08" stroke="#222" stroke-width="2"></path>
+                    <circle cx="6.5" cy="12" r="1" fill="#ffe27a"/>
+                </svg>
+            </button>
+            <audio id="bgMusic" src="assets/musica.mp3" loop preload="auto" playsinline></audio>
+        </div>
+
+        <!-- ============ PORTADA ============ -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="scroll-indicator">
+                    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-spacer"></div>
+
+        <!-- Content -->
+        <div class="content">
+
+        <!-- ============ COUNTDOWN ============ -->
+        <section class="countdown-section">
+            <h2 class="section-title">Faltan</h2>
+            <div class="countdown-container">
+                <div class="countdown-item"><div class="countdown-number" id="days">00</div><div class="countdown-label">DÍAS</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="hours">00</div><div class="countdown-label">HORAS</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="minutes">00</div><div class="countdown-label">MINUTOS</div></div>
+                <div class="countdown-item"><div class="countdown-number" id="seconds">00</div><div class="countdown-label">SEGUNDOS</div></div>
+            </div>
+            <div class="firefly" style="right:14%;bottom:6px"></div>
+        </section>
+        <div class="seam-divider-wrap"><div class="seam-divider"><span class="line"></span><span class="ornament">✦</span><span class="line right"></span></div></div>
+
+        <!-- ============ CELEBRACIÓN (única tarjeta, sin Misa) ============ -->
+        <section class="events-section">
+            <div class="firefly" style="left:20%;top:8px;animation-delay:1s"></div>
+            <div class="firefly" style="right:16%;bottom:6px;animation-delay:.5s"></div>
+            <div class="events-container">
+                <div class="event-card">
+                    <div class="event-icon"><img src="assets/lotus-icon.png" alt=""></div>
+                    <h3 class="event-title">Celebración</h3>
+                    <div class="event-details">
+                        <h4>Día</h4>
+                        <p>Sábado 30 de Enero, 2027 - 6:00pm</p>
+                    </div>
+                    <div class="event-details">
+                        <h4>Lugar</h4>
+                        <p>Salón Vista Marina</p>
+                        <p class="event-address">Av. España 70, Santo Domingo Este</p>
+                    </div>
+                    <button class="btn-wedding" onclick="openLocation('celebration')">¿Cómo llegar?</button>
+                </div>
+            </div>
+        </section>
+        <div class="seam-divider-wrap"><div class="seam-divider"><span class="line"></span><span class="ornament">✦</span><span class="line right"></span></div></div>
+
+        <!-- ============ FIESTA ============ -->
+        <section class="party-section">
+            <div class="firefly" style="left:18%;top:8px;animation-delay:1.2s"></div>
+            <div class="firefly" style="right:24%;bottom:6px;animation-delay:.3s"></div>
+            <div class="party-container">
+                <h2 class="section-title">Detalles</h2>
+                <p class="section-subtitle">Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.</p>
+                <div class="party-grid">
+                    <div class="party-card">
+                        <div class="party-icon"><img class="deco-icon" src="assets/icon-fotos.png" alt=""></div>
+                        <h3>Comparte tus Fotos</h3>
+                        <p>Ayúdanos a reunir los recuerdos de este día compartiendo tus fotografías del momento</p>
+                        <button class="btn-wedding" onclick="uploadPhoto()">Subir Foto</button>
+                    </div>
+                    <div class="party-card">
+                        <div class="party-icon"><img class="deco-icon" src="assets/icon-vestimenta.png" alt=""></div>
+                        <h3>Código de Vestimenta</h3>
+                        <p>Una orientación para tu vestuario</p>
+                        <button class="btn-wedding" onclick="showDressCode()">Ver más</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="seam-divider-wrap"><div class="seam-divider"><span class="line"></span><span class="ornament">✦</span><span class="line right"></span></div></div>
+
+        <!-- ============ REGALOS (con cocodrilo) ============ -->
+        <section class="gifts-section">
+            <div class="firefly" style="left:16%;top:10px;animation-delay:1.4s"></div>
+            <div class="gifts-container">
+                <h2 class="section-title">Regalos</h2>
+                <p class="section-subtitle">Si deseas regalarme algo más que tu hermosa presencia.</p>
+                <div class="gift-icon"><img class="deco-icon" src="assets/icon-regalo.png" alt=""></div>
+                <button class="btn-wedding" onclick="showGifts()">Ver más</button>
+            </div>
+            <div class="croc-decor"><img src="assets/crocodile.png" alt=""></div>
+        </section>
+        <div class="seam-divider-wrap"><div class="seam-divider"><span class="line"></span><span class="ornament">✦</span><span class="line right"></span></div></div>
+
+        <!-- ============ RSVP + FOOTER (misma imagen de fondo) ============ -->
+        <div class="rsvp-footer-wrap">
+            <section class="rsvp-section">
+                <div class="firefly" style="left:22%;top:12px;animation-delay:.9s"></div>
+                <div class="rsvp-container">
+                    <h2 class="section-title">Confirma tu Asistencia</h2>
+                    <p class="section-subtitle">Comparte este hermoso momento conmigo</p>
+                    <div class="whatsapp-icon"><img class="deco-icon" src="assets/icon-confirmar.png" alt=""></div>
+                    <button class="btn-wedding" onclick="confirmAttendance()">Confirmar Asistencia</button>
+                </div>
+            </section>
+
+            <div class="divider">
+                <span class="line"></span>
+                <span class="ornament">✦</span>
+                <span class="line right"></span>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-content">
+                    <p>Con cariño,</p>
+                    <h3>Cristhin Aldelis<br/>Peralta González</h3>
+                    <p class="footer-date">30 de Enero, 2027</p>
+                </div>
+                <div class="frog-decor"><img src="assets/frog.png" alt=""></div>
+            </footer>
+        </div>
+
+        </div>
+
+        <!-- Toast notification -->
+        <div id="toast" class="toast"><div id="toastContent"></div></div>
+
+        <!-- Ventana flotante de información (Dress Code) -->
+        <div id="infoModal" class="modal-overlay">
+            <div class="info-modal-box">
+                <h3 id="infoModalTitle" class="info-modal-title"></h3>
+                <div id="infoModalBody" class="info-modal-body"></div>
+                <button class="btn-gold-outline" onclick="closeInfoModal()">Cerrar</button>
+            </div>
+        </div>
+
+        <script src="JAVAB.js?v=25" defer></script>
+</body>
+</html>
