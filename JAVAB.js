@@ -297,7 +297,7 @@ function uploadPhoto() {
 function showDressCode() {
     showInfoModal(
         "Código de Vestimenta",
-        `<p class="dress-code-label">Formal</p>
+        `<p class="dress-code-label">Elegante</p>
          <p>Damas: vestido largo o de cóctel elegante.<br/>Caballeros: traje.</p>
          <div class="no-green-note">
             <span class="no-green-swatch" aria-hidden="true"></span>
